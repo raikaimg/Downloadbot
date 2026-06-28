@@ -1,0 +1,40 @@
+[Unit]
+Description=Video Dump Telegram Bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/video_dump_bot
+
+# Environment variables — edit these or use an EnvironmentFile instead
+Environment="BOT_TOKEN=YOUR_BOT_TOKEN_HERE"
+Environment="DUMP_CHANNEL_ID=-1001234567890"
+Environment="ALLOWED_USER_IDS=123456789"
+Environment="MAX_WORKERS=4"
+Environment="TEMP_DIR=/tmp/video_dump_bot"
+Environment="MAX_FILE_SIZE_MB=2000"
+
+# Alternatively, load from a .env file:
+# EnvironmentFile=/home/ubuntu/video_dump_bot/.env
+
+ExecStart=/home/ubuntu/video_dump_bot/venv/bin/python bot.py
+
+# Restart policy — restart on crash but not on clean exit
+Restart=on-failure
+RestartSec=10
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+# Memory guard — OOM-kill the process before it takes down the server
+MemoryMax=2G
+MemorySwapMax=0
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=video-dump-bot
+
+[Install]
+WantedBy=multi-user.target
