@@ -8,11 +8,11 @@ import os
 # ── Required ──────────────────────────────────────────────────────────────────
 
 # Your bot token from @BotFather
-BOT_TOKEN: str = os.getenv("BOT_TOKEN", "YOUR_BOT_TOKEN_HERE")
+BOT_TOKEN: str = os.getenv("BOT_TOKEN", "7322909772:AAG_OeDo-8qE1tkiE9QSySfEnwaqRHGrmWQ")
 
 # Channel ID where videos will be dumped.
 # Format: -100XXXXXXXXXX  (get via forwarding a channel msg to @userinfobot)
-DUMP_CHANNEL_ID: int | str = os.getenv("DUMP_CHANNEL_ID", "-1001234567890")
+DUMP_CHANNEL_ID: int | str = os.getenv("DUMP_CHANNEL_ID", "-1004383813590")
 
 # ── Access control ────────────────────────────────────────────────────────────
 
@@ -26,7 +26,7 @@ ALLOWED_USER_IDS: list[int] = (
 # ── Worker / concurrency ──────────────────────────────────────────────────────
 
 # Parallel download+upload workers. 4–5 is ideal.
-MAX_WORKERS: int = int(os.getenv("MAX_WORKERS", "4"))
+MAX_WORKERS: int = int(os.getenv("MAX_WORKERS", "5"))
 
 # Max upload retries per file (flood control + network errors)
 MAX_UPLOAD_RETRIES: int = int(os.getenv("MAX_UPLOAD_RETRIES", "10"))
